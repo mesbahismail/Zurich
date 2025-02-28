@@ -1,7 +1,7 @@
 import { extendTheme } from "@mui/joy/styles";
 import { accordionSummaryClasses } from "@mui/joy/AccordionSummary";
 import { TbChevronDown } from "react-icons/tb";
-import { Source_Code_Pro, Space_Grotesk } from "next/font/google";
+import { Source_Code_Pro, Cormorant, Montserrat } from "next/font/google";
 import type { InputOwnerState } from "@mui/joy/Input";
 
 // Type declarations
@@ -28,7 +28,7 @@ declare module "@mui/joy/Select" {
 }
 
 // Font initialization
-const spaceGrotesk = Space_Grotesk({
+const spaceGrotesk = Cormorant({
   subsets: ["latin"],
   adjustFontFallback: false,
   display: "swap",
@@ -54,19 +54,21 @@ const theme = extendTheme({
         root: ({ ownerState }) => ({
           ...(ownerState.color === "primary" &&
             ownerState.variant === "solid" && {
-              backgroundColor: "#34B3F1",
-              border: "1px solid #34B3F1",
+              fontSize: "12px",
+              fontFamily: "Montserrat",
+              backgroundColor: "#D69991",
+              border: "1px solid #D69991",
               color: "#050B0F",
-              borderRadius: "12px",
-              minHeight: "40px",
-              padding: "0px 12px",
+              borderRadius: "0px",
+              minHeight: "48px",
+              padding: "0px 16px",
               width: "fit-content",
               minWidth: "unset",
               transition:
                 "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease",
               "&:hover": {
-                backgroundColor: "#51C6FF",
-                border: "1px solid #81D6FF",
+                backgroundColor: "#D69991",
+                border: "1px solid #D69991",
                 boxShadow: "0 0 24px rgba(81, 198, 255, 0.24)",
               },
               "&&": { fontWeight: 600 },
