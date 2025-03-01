@@ -8,6 +8,7 @@ import {
   Typography,
   Button,
   IconButton,
+  Link,
 } from "@mui/joy";
 import { useRouter } from "next/navigation";
 import {
@@ -16,6 +17,7 @@ import {
   TbBrandTiktok,
   TbBrandInstagram,
 } from "react-icons/tb";
+import { Montserrat } from "next/font/google";
 
 export default function Home() {
   const router = useRouter();
@@ -67,8 +69,8 @@ export default function Home() {
                 left: 0,
                 width: "100%",
                 height: "100%",
-                backgroundColor: "#111",
-                opacity: 0.48,
+                backgroundColor: "#000",
+                opacity: 0.64,
               },
             }}
           >
@@ -95,7 +97,7 @@ export default function Home() {
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 100,
-          height: "64px",
+          height: "100px",
           display: "flex",
           alignItems: "center",
         }}
@@ -106,23 +108,112 @@ export default function Home() {
           alignItems="center"
           sx={{ width: "100%" }}
         >
-          <Typography level="h2" sx={{ color: "#fff" }}>
-            Zurich
+          <Typography fontSize="32px" fontWeight={500} sx={{ color: "#fff" }}>
+            Elya Zurich
           </Typography>
 
+          <Stack direction="row" spacing={8}>
+            <Link
+              href="/work"
+              fontSize="20px"
+              underline="none"
+              sx={{
+                color: "#fff",
+                fontWeight: 500,
+                transition: "background-color 0.3s ease, opacity 0.3s ease",
+                "&:hover": {
+                  color: "#fff",
+                  opacity: "0.64",
+                },
+              }}
+            >
+              My work
+            </Link>
+            <Link
+              href="/work"
+              fontSize="20px"
+              underline="none"
+              sx={{
+                color: "#fff",
+                fontWeight: 500,
+                transition: "background-color 0.3s ease, opacity 0.3s ease",
+                "&:hover": {
+                  color: "#fff",
+                  opacity: "0.64",
+                },
+              }}
+            >
+              My story
+            </Link>
+            <Link
+              href="/work"
+              fontSize="20px"
+              underline="none"
+              sx={{
+                color: "#fff",
+                fontWeight: 500,
+                transition: "background-color 0.3s ease, opacity 0.3s ease",
+                "&:hover": {
+                  color: "#fff",
+                  opacity: "0.64",
+                },
+              }}
+            >
+              Contact me{" "}
+            </Link>
+          </Stack>
+
           <Stack direction="row" spacing={2} alignItems="center">
-            <Typography level="body-sm" sx={{ color: "#fff", mr: 1 }}>
+            <Typography fontSize="20px" sx={{ color: "#fff", mr: 1 }}>
               Follow me
             </Typography>
-            <IconButton variant="plain" sx={{ color: "#fff" }}>
-              <TbBrandX size={20} />
-            </IconButton>
-            <IconButton variant="plain" sx={{ color: "#fff" }}>
-              <TbBrandTiktok size={20} />
-            </IconButton>
-            <IconButton variant="plain" sx={{ color: "#fff" }}>
-              <TbBrandInstagram size={20} />
-            </IconButton>
+            <Stack direction="row" spacing={1.5}>
+              <IconButton
+                variant="plain"
+                sx={{
+                  color: "#fff",
+                  backgroundColor: "#CB928A",
+                  borderRadius: "20px",
+                  transition: "background-color 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "#A16F68",
+                    color: "#fff",
+                  },
+                }}
+              >
+                <TbBrandX size={20} />
+              </IconButton>
+              <IconButton
+                variant="plain"
+                sx={{
+                  color: "#fff",
+                  backgroundColor: "#CB928A",
+                  borderRadius: "20px",
+                  transition: "background-color 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "#A16F68",
+                    color: "#fff",
+                  },
+                }}
+              >
+                <TbBrandTiktok size={20} />
+              </IconButton>
+              <IconButton
+                variant="plain"
+                sx={{
+                  color: "#fff",
+                  backgroundColor: "#CB928A",
+                  borderRadius: "20px",
+                  transition: "background-color 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "#A16F68",
+                    color: "#fff",
+                  },
+                }}
+              >
+                <TbBrandInstagram size={20} />
+              </IconButton>
+            </Stack>
           </Stack>
         </Stack>
       </Container>
@@ -141,18 +232,25 @@ export default function Home() {
           textAlign: "center",
         }}
       >
-        <Stack spacing={3} alignItems="center">
-          <Typography level="h2" sx={{ color: "#fff" }}>
-            Elya Zurich
+        <Stack spacing={1.5} alignItems="center">
+          <Typography
+            fontSize="20px"
+            fontFamily="Montserrat"
+            fontWeight={600}
+            letterSpacing="2px"
+            sx={{ color: "#E6ADA5" }}
+          >
+            ELYA ZURICH
           </Typography>
 
           <Typography
-            level="h1"
+            fontWeight={400}
             sx={{
               color: "#fff",
               maxWidth: "800px",
-              fontSize: "3.5rem",
-              lineHeight: 1.2,
+              fontSize: "52px",
+              lineHeight: "66px",
+              pb: 1.5,
             }}
           >
             Taking photos is savoring life, and every second of it.
@@ -162,7 +260,6 @@ export default function Home() {
             color="primary"
             variant="solid"
             endDecorator={<TbChevronRight size={20} />}
-            sx={{ mt: 2 }}
           >
             CHECK MY WORK
           </Button>
@@ -178,10 +275,8 @@ export default function Home() {
           transform: "translateX(-50%)",
           zIndex: 100,
           display: "flex",
-          gap: "12px",
+          gap: "16px",
           padding: "8px",
-          backgroundColor: "rgba(0,0,0,0.2)",
-          borderRadius: "8px",
         }}
       >
         {slides.map((_, index) => (
@@ -194,10 +289,11 @@ export default function Home() {
               minHeight: 0,
               minWidth: 0,
               transform: "rotate(45deg)",
-              width: "20px",
-              height: "20px",
+              width: "12px",
+              borderRadius: "0px",
+              height: "12px",
               backgroundColor: "transparent",
-              border: "1px solid #fff",
+              border: "1.5px solid #fff",
               opacity: activeSlide === index ? 1 : 0.64,
               transition: "all 0.3s ease",
               "&:hover": {

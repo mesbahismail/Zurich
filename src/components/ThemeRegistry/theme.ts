@@ -56,20 +56,18 @@ const theme = extendTheme({
             ownerState.variant === "solid" && {
               fontSize: "12px",
               fontFamily: "Montserrat",
-              backgroundColor: "#D69991",
-              border: "1px solid #D69991",
-              color: "#050B0F",
+              backgroundColor: "#CB928A",
+
+              color: "#fff",
               borderRadius: "0px",
-              minHeight: "48px",
-              padding: "0px 16px",
+              minHeight: "52px",
+              padding: "0px 20px",
               width: "fit-content",
               minWidth: "unset",
               transition:
                 "background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease",
               "&:hover": {
-                backgroundColor: "#D69991",
-                border: "1px solid #D69991",
-                boxShadow: "0 0 24px rgba(81, 198, 255, 0.24)",
+                backgroundColor: "#A16F68",
               },
               "&&": { fontWeight: 600 },
             }),
