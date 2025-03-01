@@ -232,15 +232,15 @@ export default function Home() {
           textAlign: "center",
         }}
       >
-        <Stack spacing={1.5} alignItems="center">
+        <Stack spacing={2} alignItems="center">
           <Typography
-            fontSize="20px"
+            fontSize="18px"
             fontFamily="Montserrat"
             fontWeight={600}
             letterSpacing="2px"
             sx={{ color: "#E6ADA5" }}
           >
-            ELYA ZURICH
+            WEDDING PHOTOGRAPHER{" "}
           </Typography>
 
           <Typography
@@ -250,7 +250,7 @@ export default function Home() {
               maxWidth: "800px",
               fontSize: "52px",
               lineHeight: "66px",
-              pb: 1.5,
+              pb: 2,
             }}
           >
             Taking photos is savoring life, and every second of it.
