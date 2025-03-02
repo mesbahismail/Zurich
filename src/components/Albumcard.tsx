@@ -84,15 +84,6 @@ export default function Albumcard() {
               alignItems: "center", // Add vertical alignment
             }}
           >
-            <Box
-              sx={{
-                width: "24px",
-                bgcolor: "#fff",
-                opacity: "0.64",
-                height: "4px",
-                flexShrink: 0,
-              }}
-            />
             <Typography
               fontSize="18px"
               fontFamily="Montserrat"
@@ -111,6 +102,15 @@ export default function Albumcard() {
                 flexShrink: 0,
               }}
             />
+            <Typography
+              fontSize="18px"
+              fontFamily="Montserrat"
+              fontWeight={600}
+              letterSpacing="2px"
+              sx={{ color: "#fff" }}
+            >
+              MY WORK
+            </Typography>
           </Stack>
         </Stack>
       </Stack>
