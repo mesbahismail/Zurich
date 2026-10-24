@@ -16,11 +16,15 @@ cd joy-ui-nextjs-ts
 Install it and run:
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your web browser to see the result.
+
+For production, run `npm run build`. Vercel should use `npm ci` as the install
+command and `npm run build` as the build command. Commit `package-lock.json`
+with dependency updates so deployments use the verified versions.
 
 or:
 
