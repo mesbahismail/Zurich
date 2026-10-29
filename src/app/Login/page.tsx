@@ -136,13 +136,13 @@ export default function LoginPage() {
                     Check your email!
                   </Typography>
                   <Typography level="body-md" sx={{ color: "#888" }}>
-                    We've sent a login link to{" "}
+                    We&apos;ve sent a login link to{" "}
                     <strong style={{ color: "#EDB772" }}>{email}</strong>.
                     Please check your inbox and click the link to access your
                     account.
                   </Typography>
                   <Typography level="body-sm" sx={{ color: "#888", mt: 2 }}>
-                    Didn't receive the email?{" "}
+                    Didn&apos;t receive the email?{" "}
                     <Link
                       onClick={() => setSubmitted(false)}
                       sx={{

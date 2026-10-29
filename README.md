@@ -1,49 +1,96 @@
-# Joy UI - Next.js App Router with TypeScript
+# Alma & Light wedding photography template
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/HEAD/packages/create-next-app).
+Next.js App Router wedding photography portfolio using React, MUI Joy, and
+shadcn/ui with Tailwind CSS 4. The portfolio uses a warm editorial style, fluid typography, and responsive layouts.
+Fonts are installed locally through Fontsource, so builds do not fetch Google Fonts.
 
-## How to use
-
-Download the example [or clone the repo](https://github.com/mui/material-ui):
-
-<!-- #default-branch-switch -->
-
-```bash
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/joy-ui-nextjs-ts
-cd joy-ui-nextjs-ts
-```
-
-Install it and run:
+## Run locally
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your web browser to see the result.
+- Template: http://localhost:3001
+- Registry browser: http://localhost:3001/registry
+- Registry catalog: http://localhost:3001/r/registry.json
+- Installable template: http://localhost:3001/r/wedding-photography.json
 
-For production, run `npm run build`. Vercel should use `npm ci` as the install
-command and `npm run build` as the build command. Commit `package-lock.json`
-with dependency updates so deployments use the verified versions.
+Port 3001 avoids the other project already using port 3000 on this machine.
+The development server binds to localhost.
 
-or:
+## Install from the registry
 
-<!-- #default-branch-switch -->
+In a separate Next.js App Router project with shadcn initialized:
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts)
+```bash
+npx shadcn@latest add http://localhost:3001/r/wedding-photography.json
+```
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/github/mui/material-ui/tree/master/examples/joy-ui-nextjs-ts)
+The block includes the portfolio and couple story routes, root layout, Joy theme/provider,
+shadcn button, utilities, CSS, and PostCSS configuration. Review the CLI's
+prompts before overwriting files in an existing application. This is a visual
+template: login and contact pages do not include backend services.
 
-## Learn more
+Photographs in the installed block load from the registry host. Keep that host
+running, or copy the original files from `public/` into the consuming app and
+change image URLs back to local paths. The generated registry replaces image
+references with absolute URLs; the original template still uses local images.
 
-To learn more about this example:
+This project's `components.json` defines `@zurich`, so this also works locally:
 
-- [Next.js documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Customizing Joy UI](https://mui.com/joy-ui/customization/approaches/) - approaches to customizing Joy UI.
+```bash
+npx shadcn@latest add @zurich/wedding-photography
+```
 
-## What's next?
+## Build and validate
 
-<!-- #default-branch-switch -->
+```bash
+npm run registry:build
+npm run lint
+npm run typecheck
+npm run build
+npm start -- --port 3001
+```
 
-You now have a working example project.
-You can head back to the documentation and continue by browsing the [templates](https://mui.com/joy-ui/getting-started/templates/) section.
+`predev` and `prebuild` regenerate the registry from `registry.json` and the
+current source files. Generated JSON under `public/r/` and `public/registry.json`
+is not committed.
+
+## Publish a public registry
+
+Build with the public HTTPS origin where this application and its photos will
+be hosted:
+
+```bash
+REGISTRY_URL=https://your-domain.example npm run build
+```
+
+Deploy the application, then change `@zurich` in `components.json` to
+`https://your-domain.example/r/{name}.json`. Consumers can install the template
+from `https://your-domain.example/r/wedding-photography.json`.
+
+A localhost registry is available to your local CLI; it is not a public listing.
+For inclusion in shadcn's public directory, publish first and follow the
+[registry directory submission requirements](https://ui.shadcn.com/docs/registry/registry-directory).
+
+## Demo content and photography
+
+Alma & Light and its couple stories are fictional examples. Added photographs are stored locally, with source links and credit in `public/IMAGE-CREDITS.md`. The gallery uses distinct wedding imagery, a photographer portrait, and responsive navigation and typography.
+
+## Reference design and interactions
+
+The portfolio follows the supplied serif/script photography references, including
+blush buttons, image-overlay album cards, overlapping about panels, a photo-grid
+lightbox, full-screen mobile navigation, and a dark footer. Use the floating moon/sun
+control at the bottom-right to switch between light and dark themes (saved locally).
+
+- `/work`: sort albums by date or couple name.
+- `/stories/[slug]`: reveal more photographs; click to open the lightbox, use
+  arrow keys or the previous/next buttons, copy an image link, or press Escape.
+- `/news` and `/news/[slug]`: travel and photography journal examples.
+- `/contact`: validated enquiry form with an explicit demo confirmation.
+- Newsletter: validated demo signup; no personal data is stored or transmitted.
+- Unknown URLs: custom photography-themed 404 page.
+
+Forms are previews. Connect a real email or newsletter provider before launch.

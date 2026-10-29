@@ -1,152 +1,33 @@
 "use client";
 
-import * as React from "react";
-import { Stack, Button, Typography, IconButton, Container } from "@mui/joy";
-import { useRouter } from "next/navigation";
-import Link from "@mui/joy/Link";
-import { TbBrandInstagram, TbBrandTiktok, TbBrandX } from "react-icons/tb";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import SocialLinks from "./SocialLinks";
+import Wordmark from "./Wordmark";
 
-export default function Header() {
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  const router = useRouter(); // Use the router inside the component
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleNavigation = (path: string) => {
-    router.push(path); // Correctly using router.push()
-  };
-
-  return (
-    <Stack
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
-      spacing={2}
-      sx={{
-        height: "100px",
-        position: "sticky",
-        top: 0,
-        backgroundColor: "rgba(255, 255, 255, 0.90)",
-        zIndex: 1000,
-        maxWidth: "1352px",
-        width: "100%",
-        margin: "0 auto",
-      }}
-    >
-      <Typography fontSize="32px" fontWeight={500} sx={{ color: "#222" }}>
-        Elya Zurich
-      </Typography>
-
-      <Stack direction="row" spacing={8}>
-        <Link
-          href="/work"
-          fontSize="20px"
-          underline="none"
-          sx={{
-            color: "#222",
-            fontWeight: 500,
-            transition: "background-color 0.3s ease, opacity 0.3s ease",
-            "&:hover": {
-              color: "#222",
-              opacity: "0.64",
-            },
-          }}
-        >
-          My work
-        </Link>
-        <Link
-          href="/work"
-          fontSize="20px"
-          underline="none"
-          sx={{
-            color: "#222",
-            fontWeight: 500,
-            transition: "background-color 0.3s ease, opacity 0.3s ease",
-            "&:hover": {
-              color: "#222",
-              opacity: "0.64",
-            },
-          }}
-        >
-          My story
-        </Link>
-        <Link
-          href="/work"
-          fontSize="20px"
-          underline="none"
-          sx={{
-            color: "#222",
-            fontWeight: 500,
-            transition: "background-color 0.3s ease, opacity 0.3s ease",
-            "&:hover": {
-              color: "#222",
-              opacity: "0.64",
-            },
-          }}
-        >
-          Contact me{" "}
-        </Link>
-      </Stack>
-
-      <Stack direction="row" spacing={2} alignItems="center">
-        <Typography fontSize="20px" sx={{ color: "#222", mr: 1 }}>
-          Follow me
-        </Typography>
-        <Stack direction="row" spacing={1.5}>
-          <IconButton
-            variant="plain"
-            sx={{
-              color: "#fff",
-              backgroundColor: "#CB928A",
-              borderRadius: "20px",
-              transition: "background-color 0.3s ease",
-              "&:hover": {
-                backgroundColor: "#A16F68",
-                color: "#fff",
-              },
-            }}
-          >
-            <TbBrandX size={20} />
-          </IconButton>
-          <IconButton
-            variant="plain"
-            sx={{
-              color: "#fff",
-              backgroundColor: "#CB928A",
-              borderRadius: "20px",
-              transition: "background-color 0.3s ease",
-              "&:hover": {
-                backgroundColor: "#A16F68",
-                color: "#fff",
-              },
-            }}
-          >
-            <TbBrandTiktok size={20} />
-          </IconButton>
-          <IconButton
-            variant="plain"
-            sx={{
-              color: "#fff",
-              backgroundColor: "#CB928A",
-              borderRadius: "20px",
-              transition: "background-color 0.3s ease",
-              "&:hover": {
-                backgroundColor: "#A16F68",
-                color: "#fff",
-              },
-            }}
-          >
-            <TbBrandInstagram size={20} />
-          </IconButton>
-        </Stack>
-      </Stack>
-    </Stack>
-  );
+const links = [["/work", "Work"], ["/about", "About"], ["/contact", "Contact"], ["/news", "News"]];
+export default function Header({ overlay = false }: { overlay?: boolean }) {
+  const path = usePathname();
+  const [open, setOpen] = useState(false);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previous; };
+  }, [open]);
+  function close() { dialog.current?.close(); setOpen(false); trigger.current?.focus(); }
+  return <header className={`studio-header ${overlay ? "studio-header--overlay" : ""}`}>
+    <Wordmark />
+    <nav className="desktop-nav" aria-label="Main navigation">{links.map(([href, label]) => <Link key={href} href={href} aria-current={path.startsWith(href) ? "page" : undefined}>{label}</Link>)}</nav>
+    <div className="header-social"><span>Follow me</span><SocialLinks /></div>
+    <button className="menu-toggle" ref={trigger} aria-label="Open navigation" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => { dialog.current?.showModal(); setOpen(true); }}><Menu size={25} strokeWidth={1.4} /></button>
+    <dialog className="mobile-menu" id="mobile-navigation" ref={dialog} onClose={() => setOpen(false)} aria-label="Navigation">
+      <div className="mobile-menu-top"><Wordmark onClick={close} /><button aria-label="Close navigation" onClick={close} autoFocus><X size={28} strokeWidth={1.2} /></button></div>
+      <nav aria-label="Mobile navigation">{links.map(([href, label]) => <Link key={href} href={href} onClick={close}>{label}</Link>)}</nav><div className="mobile-menu-social"><SocialLinks /></div>
+    </dialog>
+  </header>;
 }

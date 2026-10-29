@@ -1,7 +1,6 @@
 import { extendTheme } from "@mui/joy/styles";
 import { accordionSummaryClasses } from "@mui/joy/AccordionSummary";
 import { TbChevronDown } from "react-icons/tb";
-import { Source_Code_Pro, Cormorant, Montserrat } from "next/font/google";
 import type { InputOwnerState } from "@mui/joy/Input";
 
 // Type declarations
@@ -27,23 +26,11 @@ declare module "@mui/joy/Select" {
   }
 }
 
-// Font initialization
-const spaceGrotesk = Cormorant({
-  subsets: ["latin"],
-  adjustFontFallback: false,
-  display: "swap",
-});
-
-const sourceCodePro = Source_Code_Pro({
-  subsets: ["latin"],
-  display: "swap",
-});
-
 const theme = extendTheme({
   fontFamily: {
-    body: spaceGrotesk.style.fontFamily,
-    display: spaceGrotesk.style.fontFamily,
-    code: sourceCodePro.style.fontFamily,
+    body: '"Cormorant Variable", Georgia, serif',
+    display: '"Cormorant Variable", Georgia, serif',
+    code: '"Source Code Pro Variable", monospace',
   },
   components: {
     JoyButton: {
@@ -55,7 +42,7 @@ const theme = extendTheme({
           ...(ownerState.color === "primary" &&
             ownerState.variant === "solid" && {
               fontSize: "12px",
-              fontFamily: "Montserrat",
+              fontFamily: '"Montserrat Variable", Montserrat, sans-serif',
               backgroundColor: "#CB928A",
 
               color: "#fff",
@@ -155,7 +142,7 @@ const theme = extendTheme({
           border: "1px solid #444",
           background: "transparent",
           padding: "8px 12px",
-          fontFamily: spaceGrotesk.style.fontFamily,
+          fontFamily: '"Cormorant Variable", Georgia, serif',
           transition: "border-color 0.2s ease, background-color 0.2s ease",
           color: "#fff",
           "& [class*=selectedValue]": {
@@ -234,7 +221,7 @@ const theme = extendTheme({
         root: ({ ownerState }) => ({
           borderRadius: "12px",
           fontSize: "14px",
-          fontFamily: spaceGrotesk.style.fontFamily,
+          fontFamily: '"Cormorant Variable", Georgia, serif',
           transition: "border-color 0.2s ease, background-color 0.2s ease",
           "--Textarea-paddingBlock": "calc(0.5rem - 1px)",
           "--Textarea-minHeight": "40px",

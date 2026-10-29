@@ -4,28 +4,44 @@
   "private": true,
   "packageManager": "npm@10.9.2",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 127.0.0.1 --port 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "post-update": "echo \"codesandbox preview only, need an update\" && pnpm update --latest"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "registry:build": "node scripts/build-registry.mjs",
+    "predev": "npm run registry:build",
+    "prebuild": "npm run registry:build"
   },
   "dependencies": {
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@fontsource-variable/cormorant": "^5.3.0",
+    "@fontsource-variable/montserrat": "^5.3.0",
+    "@fontsource-variable/source-code-pro": "^5.3.1",
+    "@fontsource/great-vibes": "^5.3.0",
     "@mui/joy": "^5.0.0-beta.51",
-    "next": "15.5.28",
-    "react": "19.3.1",
-    "react-dom": "19.3.1",
-    "react-icons": "^5.3.0"
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.64.0",
+    "next": "^16.4.3",
+    "radix-ui": "^1.8.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-icons": "^5.3.0",
+    "tailwind-merge": "^3.7.0",
+    "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "eslint": "latest",
-    "eslint-config-next": "15.5.28",
+    "eslint-config-next": "^16.4.3",
+    "shadcn": "^4.23.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "latest"
   }
 }

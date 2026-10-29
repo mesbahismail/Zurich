@@ -33,3 +33,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Built shadcn registry (generated before dev/build)
+/public/r/
+/public/registry.json
