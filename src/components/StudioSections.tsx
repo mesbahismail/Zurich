@@ -1,14 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
-import Albumcard from "./Albumcard";
-import { stories } from "@/lib/portfolio";
+export { default as WorkTeaser } from "./WorkTeaser";
 
 export function StoryIntro({ full = false }: { full?: boolean }) {
-  return <section className="story-overlap content-width" id="my-story"><div className="story-portrait"><Image src="/alma-portrait.jpg" alt="A photographer looking through a vintage camera" fill unoptimized sizes="(max-width: 700px) 100vw, 55vw" /></div><div className="story-panel"><p className="eyebrow">MY STORY</p><h2>Taking photos was and<br className="desktop-break" /> still is my passion.</h2><p>I’m Alma. A photographer, a light chaser, and a collector of the little moments. From quiet vows to wild dance floors, I make photographs that feel like you.</p>{full && <p>Based in Annecy, I follow stories across France and beyond. My approach blends honest documentary moments with gently guided portraits. No perfect poses. Just your people, your day, and a little magic.</p>}<Link className="studio-button" href={full ? "/contact" : "/about"}>{full ? "CONTACT ME" : "LEARN MORE"}<ArrowRight size={16} /></Link></div></section>;
-}
-export function WorkTeaser() {
-  return <section className="work-teaser content-width"><div className="work-teaser-copy"><p className="eyebrow">MY WORK</p><h2>Take a tour inside<br />my gallery.</h2><Link className="studio-button" href="/work">TAKE A TOUR<ArrowRight size={16} /></Link></div><div className="teaser-albums">{stories.slice(0, 2).map((story) => <Albumcard key={story.slug} story={story} />)}</div></section>;
+  return <section className="story-overlap content-width" id="my-story"><div className="story-portrait"><Image src="/alma-portrait.jpg" alt="A photographer looking through a vintage camera" fill unoptimized sizes="(max-width: 700px) 100vw, 55vw" /></div><div className="story-panel"><p className="eyebrow">MY STORY</p><h2>Taking photos was and<br className="desktop-break" /> still is my passion.</h2><p>I’m Elya. A photographer, a light chaser, and a collector of the little moments. From quiet vows to wild dance floors, I make photographs that feel like you.</p>{full && <p>Based in Annecy, I follow stories across France and beyond. My approach blends honest documentary moments with gently guided portraits. No perfect poses. Just your people, your day, and a little magic.</p>}<Link className="studio-button" href={full ? "/contact" : "/about"}>{full ? "CONTACT ME" : "LEARN MORE"}<ArrowRight size={16} /></Link></div></section>;
 }
 export function Invitation() {
   return <section className="invitation"><span className="round-icon"><Mail size={30} strokeWidth={1.3} /></span><h2>Do you have a new wedding<br />coming up?</h2><p>Tell me a little about your plans. I’d love to help you<br className="desktop-break" /> keep the moments that matter most.</p><Link href="/contact" className="studio-button">CONTACT ME<ArrowRight size={16} /></Link></section>;

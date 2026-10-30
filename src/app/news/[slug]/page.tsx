@@ -7,7 +7,7 @@ import { Invitation } from "@/components/StudioSections";
 import { journal } from "@/lib/journal";
 
 export function generateStaticParams() { return journal.map(({ slug }) => ({ slug })); }
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const post = journal.find((item) => item.slug === slug); return { title: post ? `${post.title} — Alma & Light` : "Article not found" }; }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const post = journal.find((item) => item.slug === slug); return { title: post ? `${post.title} — Elya Zurich` : "Article not found" }; }
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const index = journal.findIndex((post) => post.slug === slug);

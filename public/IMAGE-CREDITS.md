@@ -1,6 +1,6 @@
 # Portfolio image credits
 
-Alma & Light is an illustrative studio identity, not the identity of the people pictured.
+Elya Zurich is an illustrative studio identity, not the identity of the people pictured.
 Couple names and stories are fictional examples and do not describe the source photographs.
 
 - `alma-portrait.jpg`: Taisiia Stupak, Unsplash. https://unsplash.com/photos/0fKMSXKi7sM

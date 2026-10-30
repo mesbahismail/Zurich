@@ -11,7 +11,7 @@ export function generateStaticParams() { return stories.map(({ slug }) => ({ slu
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const story = stories.find((item) => item.slug === slug);
-  return { title: story ? `${story.names} — Alma & Light` : "Story not found" };
+  return { title: story ? `${story.names} — Elya Zurich` : "Story not found" };
 }
 export default async function StoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

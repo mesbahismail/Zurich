@@ -1,4 +1,4 @@
-# Alma & Light wedding photography template
+# Elya Zurich wedding photography template
 
 Next.js App Router wedding photography portfolio using React, MUI Joy, and
 shadcn/ui with Tailwind CSS 4. The portfolio uses a warm editorial style, fluid typography, and responsive layouts.
@@ -76,7 +76,7 @@ For inclusion in shadcn's public directory, publish first and follow the
 
 ## Demo content and photography
 
-Alma & Light and its couple stories are fictional examples. Added photographs are stored locally, with source links and credit in `public/IMAGE-CREDITS.md`. The gallery uses distinct wedding imagery, a photographer portrait, and responsive navigation and typography.
+Elya Zurich and its couple stories are fictional examples. Added photographs are stored locally, with source links and credit in `public/IMAGE-CREDITS.md`. The gallery uses distinct wedding imagery, a photographer portrait, and responsive navigation and typography.
 
 ## Reference design and interactions
 

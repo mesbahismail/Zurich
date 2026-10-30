@@ -7,13 +7,13 @@ import ThemeRegistry from "@/components/ThemeRegistry/ThemeRegistry";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata = {
-  title: "Alma & Light — Wedding Photography",
-  description: "Honest wedding photographs, a little poetry. An Annecy-inspired wedding photography portfolio by Alma & Light.",
+  title: "Elya Zurich — Wedding Photography",
+  description: "Honest wedding photographs, a little poetry. An Annecy-inspired wedding photography portfolio by Elya Zurich.",
 };
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
         <ThemeRegistry>
           {props.children}

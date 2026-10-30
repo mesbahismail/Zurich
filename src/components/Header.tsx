@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -8,8 +8,18 @@ import SocialLinks from "./SocialLinks";
 import Wordmark from "./Wordmark";
 
 const links = [["/work", "Work"], ["/about", "About"], ["/contact", "Contact"], ["/news", "News"]];
+
+function subscribeToScroll(onChange: () => void) {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+}
+
+function getScrolled() { return window.scrollY > 48; }
+function getServerScrolled() { return false; }
+
 export default function Header({ overlay = false }: { overlay?: boolean }) {
   const path = usePathname();
+  const scrolled = useSyncExternalStore(subscribeToScroll, getScrolled, getServerScrolled);
   const [open, setOpen] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -20,7 +30,7 @@ export default function Header({ overlay = false }: { overlay?: boolean }) {
     return () => { document.body.style.overflow = previous; };
   }, [open]);
   function close() { dialog.current?.close(); setOpen(false); trigger.current?.focus(); }
-  return <header className={`studio-header ${overlay ? "studio-header--overlay" : ""}`}>
+  return <div className="header-slot"><div className={`header-bar ${overlay && !scrolled ? "header-bar--overlay" : ""} ${scrolled ? "is-scrolled" : ""}`}><header className="studio-header">
     <Wordmark />
     <nav className="desktop-nav" aria-label="Main navigation">{links.map(([href, label]) => <Link key={href} href={href} aria-current={path.startsWith(href) ? "page" : undefined}>{label}</Link>)}</nav>
     <div className="header-social"><span>Follow me</span><SocialLinks /></div>
@@ -29,5 +39,5 @@ export default function Header({ overlay = false }: { overlay?: boolean }) {
       <div className="mobile-menu-top"><Wordmark onClick={close} /><button aria-label="Close navigation" onClick={close} autoFocus><X size={28} strokeWidth={1.2} /></button></div>
       <nav aria-label="Mobile navigation">{links.map(([href, label]) => <Link key={href} href={href} onClick={close}>{label}</Link>)}</nav><div className="mobile-menu-social"><SocialLinks /></div>
     </dialog>
-  </header>;
+  </header></div></div>;
 }

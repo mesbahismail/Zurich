@@ -6,7 +6,7 @@
     {
       "name": "wedding-photography",
       "type": "registry:block",
-      "title": "Alma & Light \u2014 Wedding Photography",
+      "title": "Elya Zurich \u2014 Wedding Photography",
       "description": "Reference-inspired wedding photography portfolio with script branding, blush accents, light and dark themes, sorted albums, photo lightbox, overlapping story sections, news articles, and demo enquiry forms.",
       "dependencies": [
         "@emotion/cache@latest",
@@ -144,6 +144,11 @@
           "path": "src/components/StudioSections.tsx",
           "type": "registry:component",
           "target": "components/StudioSections.tsx"
+        },
+        {
+          "path": "src/components/WorkTeaser.tsx",
+          "type": "registry:component",
+          "target": "components/WorkTeaser.tsx"
         },
         {
           "path": "src/components/ThemeRegistry/EmotionCache.tsx",

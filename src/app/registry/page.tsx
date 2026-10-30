@@ -2,15 +2,15 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import registry from "../../../registry.json";
 
-export const metadata = { title: "Alma & Light — shadcn Registry" };
+export const metadata = { title: "Elya Zurich — shadcn Registry" };
 
 export default function RegistryPage() {
   return (
     <main className="mx-auto max-w-3xl space-y-8 px-6 py-20 font-sans">
       <div className="space-y-3">
-        <p className="text-sm font-semibold uppercase tracking-widest text-primary">Alma & Light Registry</p>
+        <p className="text-sm font-semibold uppercase tracking-widest text-primary">Elya Zurich Registry</p>
         <h1 className="text-4xl font-semibold">Wedding photography template</h1>
-        <p className="text-muted-foreground">Install the Alma & Light portfolio in a Next.js App Router project using the shadcn CLI.</p>
+        <p className="text-muted-foreground">Install the Elya Zurich portfolio in a Next.js App Router project using the shadcn CLI.</p>
       </div>
       {registry.items.map((item) => (
         <article key={item.name} className="space-y-5 rounded-lg border border-border p-6">
