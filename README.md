@@ -1,5 +1,15 @@
 # Elya Zurich wedding photography template
 
+<!-- mesbah-lab-credit -->
+> **A Mesbah Lab freebie.** Designed and coded by us at [Mesbah Lab](https://mesbahlab.net).
+>
+> **More freebies:** [mesbahlab.net](https://mesbahlab.net)
+>
+> **Follow us:** [Instagram](https://www.instagram.com/themesbahlab/) · [X](https://x.com/mesbahlab) · [Facebook](https://www.facebook.com/profile.php?id=1421874334341579) · [Pinterest](https://www.pinterest.com/mesbahlab/) · [YouTube](https://www.youtube.com/channel/UCyPo3LFW1Xv8DkcEnRdB7Ug) · [Behance](https://www.behance.net/mesbahismail) · [GitHub](https://github.com/mesbahismail)
+>
+> **Enjoying this freebie?** [Support us with a donation on PayPal](https://paypal.me/mesbahlab). Your tip keeps designs free for everyone.
+<!-- /mesbah-lab-credit -->
+
 Next.js App Router wedding photography portfolio using React, MUI Joy, and
 shadcn/ui with Tailwind CSS 4. The portfolio uses a warm editorial style, fluid typography, and responsive layouts.
 Fonts are installed locally through Fontsource, so builds do not fetch Google Fonts.
